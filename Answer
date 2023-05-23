@@ -1,29 +1,29 @@
-public static bool is_valid_IP(string IpAddres)
+
+using System;
+
+namespace ConsoleApp
 {
-    string[] adress = IpAddres.Split('.');
-
-    if (adress.Length!=4)
+    class Program
     {
-        return false;
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            Console.WriteLine(IsValidIPv4(input));
+        }
+
+        static bool IsValidIPv4(string input)
+        {
+            string[] parts = input.Split('.');
+            if (parts.Length != 4) return false;
+            foreach (string part in parts)
+            {
+                if (part.Length == 0 || part.Length > 3) return false;
+                if (part[0] == '0' && part.Length > 1) return false;
+                int num;
+                if (!int.TryParse(part, out num)) return false;
+                if (num < 0 || num > 255) return false;
+            }
+            return true;
+        }
     }
-
-    for (int i = 0; i < 4; i++)
-    {
-        int result;
-        if (adress[i][0]=='0')
-        {
-            return false;
-        }
-        if (!int.TryParse(adress[i], out result))
-        {
-            return false;
-        }
-        if (result >255)
-        {
-            return false;
-        }
-    }
-
-
-    return true;
 }
