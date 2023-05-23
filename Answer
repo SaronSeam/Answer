@@ -1,4 +1,30 @@
 
+Here's a simple algorithm that can identify valid IPv4 addresses in dot-decimal format:
+
+1. Split the input string by the '.' character to get an array of strings.
+2. If the length of the array is not 4, return false.
+3. For each element in the array:
+    a. Check if it's an integer between 0 and 255 (inclusive).
+    b. If not, return false.
+4. Return true.
+
+This algorithm checks if the input string is in the correct format and if each element is a valid integer within the range of an IPv4 address.
+Here's an updated version of the algorithm that takes into account the requirement that leading zeros are considered invalid:
+1. Split the input string by the '.' character to get an array of strings.
+2. If the length of the array is not 4, return false.
+3. For each element in the array:
+    a. Check if it's an integer between 0 and 255 (inclusive).
+    b. If not, return false.
+    c. Check if the element has leading zeros (e.g. '01').
+    d. If it does, return false.
+4. Return true.
+This updated algorithm includes an additional check for leading zeros in each element of the array.
+Leng, [5/23/2023 11:41 AM]
+Here's an implementation of the algorithm
+in C# that takes a single string as input and returns a boolean value indicating whether the input string is a valid IPv4 address in dot-decimal format:
+
+
+csharp
 using System;
 
 namespace ConsoleApp
@@ -27,3 +53,8 @@ namespace ConsoleApp
         }
     }
 }
+
+
+This C# code reads a single string from the console, passes it to the IsValidIPv4 method, and outputs the result to the console. 
+The IsValidIPv4 method implements the updated algorithm I provided earlier that checks for valid IPv4 addresses in dot-decimal 
+format and considers leading zeros to be invalid.
